@@ -1,0 +1,31 @@
+mode: research_only_anatomy_aware_progression_scenarios
+dataset: GRAPE_plus_PAPILA_stability_controls
+input:
+  observed_baseline_size: 512
+  residual_diffusion_size: 256
+  registered_all_earlier_to_later_pairs: true
+model:
+  architecture: registered_residual_diffusion_v6_isnt_attention
+  base_channels: 32
+  max_change: 0.18
+  diffusion_steps: 100
+conditioning:
+  continuous_elapsed_years: true
+  baseline_vessel_map: true
+  diagnosis_condition: true
+  recursive_rollout: false
+training:
+  patient_grouped_train_validation_test: true
+  residual_loss_weight: 0.75
+  edge_loss_weight: 0.20
+  identity_loss_weight: 0.10
+  anatomy_loss_weight: 0.75
+  anatomy_sector_emphasis: 3.0
+  anatomy_supervision: observed_longitudinal_quadrant_rnfl_change
+  anatomy_sector_order: [inferior, superior, nasal, temporal]
+  hard_coded_disease_deformation: false
+safety:
+  isnt_is_attention_not_diagnosis: true
+  healthy_controls_are_zero_change_only: true
+  never_use_generated_image_as_new_observation: true
+  never_use_for_patient_care: true

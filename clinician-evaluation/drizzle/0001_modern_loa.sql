@@ -1,0 +1,21 @@
+CREATE TABLE `study_responses_v3` (
+	`session_id` text NOT NULL,
+	`case_id` text NOT NULL,
+	`case_order` integer NOT NULL,
+	`authenticity_choice` text NOT NULL,
+	`reference_side` text NOT NULL,
+	`reference_type` text NOT NULL,
+	`is_correct` integer,
+	`truth_diagnosis` text NOT NULL,
+	`diagnosis_baseline` text NOT NULL,
+	`diagnosis_a` text NOT NULL,
+	`diagnosis_b` text NOT NULL,
+	`progression_a` text NOT NULL,
+	`progression_b` text NOT NULL,
+	`features_json` text NOT NULL,
+	`confidence` integer NOT NULL,
+	`notes` text NOT NULL,
+	`elapsed_seconds` integer NOT NULL,
+	`submitted_at` text NOT NULL,
+	PRIMARY KEY(`session_id`, `case_id`)
+);

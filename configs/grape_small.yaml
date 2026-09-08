@@ -1,0 +1,17 @@
+dataset:
+  name: grape
+  root: data/grape
+  manifest: null
+mode: forecasting
+image_size: 256
+max_context_visits: 3
+training:
+  device: auto
+  seed: 20260720
+  batch_size: 1
+  gradient_accumulation_steps: 4
+  mixed_precision: auto
+  max_steps: 20
+model:
+  base_channels: 64
+  temporal_layers: 2

@@ -1,0 +1,49 @@
+# --- Large research assets (kept local, not published) ---
+data/
+outputs/
+output/
+models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# --- Third-party vendored upstream (clone separately) ---
+external/
+
+# --- Scratch / caches ---
+tmp/
+.tmp/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.ruff_cache/
+.mypy_cache/
+
+# --- Environments ---
+.venv/
+venv/
+node_modules/
+
+# --- Build output ---
+.next/
+dist/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# --- Deploy / tooling state ---
+.vercel/
+.wrangler/
+.openai/
+.vinext/
+
+# --- Secrets ---
+.env
+.env.*
+!.env.example
+
+# --- OS ---
+.DS_Store

@@ -1,0 +1,24 @@
+dataset:
+  name: sigf
+  root: data/sigf
+  manifest: null
+mode: forecasting
+image_size: 256
+max_context_visits: 3
+one_year_tolerance: [0.75, 1.25]
+training:
+  device: auto
+  seed: 20260720
+  batch_size: 1
+  gradient_accumulation_steps: 4
+  mixed_precision: auto
+  gradient_checkpointing: true
+  max_steps: 20
+  validate_every_steps: 10
+  checkpoint_every_steps: 10
+  auto_reduce_batch_on_oom: true
+model:
+  base_channels: 64
+  channel_multipliers: [1, 2, 4]
+  temporal_layers: 2
+  target_trainable_parameters: [50000000, 150000000]

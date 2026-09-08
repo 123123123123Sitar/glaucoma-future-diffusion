@@ -1,0 +1,27 @@
+mode: incident_glaucoma_survival
+input:
+  images_per_prediction: 1
+  image_size: 512
+  full_field: true
+  optic_disc_crop: true
+  quality_abstention: true
+model:
+  backbone: convnext_small
+  feature_dim: 256
+  annual_hazard_bins: 10
+  current_glaucoma_head: true
+  vcdr_head: true
+  disc_cup_segmentation_head: true
+training:
+  patient_level_split: true
+  external_site_holdout: true
+  batch_size_per_gpu: 8
+  learning_rate: 0.0002
+  seed: 20260720
+calibration:
+  ensemble_members: 5
+  method: temperature_then_isotonic
+release_gates:
+  minimum_incident_events: 500
+  minimum_nonconverting_eyes: 2000
+  require_external_10y_calibration: true

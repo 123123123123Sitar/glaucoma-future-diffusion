@@ -1,0 +1,27 @@
+study_name: RetinaProgress-3Y
+protocol_version: "1.0.0"
+population: known_glaucoma
+primary_endpoint: plr2_progression_complete_followup_2p5_to_3p5_years
+forecast_horizon_years: 3.0
+minimum_complete_followup_years: 2.5
+maximum_complete_followup_years: 3.5
+minimum_visual_field_visits: 3
+outer_folds: 5
+seed: 20260730
+image_size: 512
+model_ladder: [clinical_only, image_only_hygd_transfer, multimodal_hygd_transfer]
+release_gates:
+  auroc: 0.70
+  auroc_ci_lower: 0.50
+  sensitivity: 0.80
+  specificity: 0.50
+  brier_below_prevalence: true
+  diffusion_not_worse_than_persistence: true
+interface:
+  required: [known_glaucoma, fundus_image, visual_field_61]
+  optional: [age, iop, cct, rnfl_quadrants, sex, glaucoma_type]
+  minimum_observed_clinical_fraction: 0.70
+warning: >-
+  Research-only approximately-three-year progression estimate. Not validated
+  for diagnosis, prognosis, treatment, or any patient-care decision.
+

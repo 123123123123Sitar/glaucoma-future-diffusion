@@ -1,0 +1,22 @@
+mode: simulated_visual_scenarios
+image_size: 512
+model:
+  latent_channels: 8
+  base_channels: 64
+  conditioning:
+    - observed_baseline_identity
+    - observed_vessel_map
+    - forecast_year
+    - risk_model_cumulative_risk
+training:
+  diffusion_steps: 100
+  identity_weight: 0.25
+  anatomy_consistency_required: true
+  temporal_ordering_required: true
+inference:
+  years: 10
+  trajectories: 8
+  sampling_steps: 50
+safety:
+  never_feed_generated_pixels_to_risk_model: true
+  label: "SIMULATED SCENARIO - NOT A DIAGNOSIS"

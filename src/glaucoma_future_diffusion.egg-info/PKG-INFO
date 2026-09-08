@@ -1,0 +1,155 @@
+Metadata-Version: 2.4
+Name: glaucoma-future-diffusion
+Version: 0.1.0
+Summary: Research prototype for longitudinal glaucoma fundus forecasting with temporal diffusion.
+Author: Research Prototype
+License: MIT
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=1.24
+Requires-Dist: pandas>=2.0
+Requires-Dist: Pillow>=10.0
+Requires-Dist: PyYAML>=6.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Provides-Extra: vision
+Requires-Dist: opencv-python>=4.8; extra == "vision"
+Requires-Dist: scikit-image>=0.22; extra == "vision"
+Provides-Extra: ml
+Requires-Dist: torch>=2.2; extra == "ml"
+Requires-Dist: torchvision>=0.17; extra == "ml"
+Requires-Dist: scikit-learn>=1.3; extra == "ml"
+Requires-Dist: tqdm>=4.66; extra == "ml"
+Provides-Extra: reports
+Requires-Dist: jinja2>=3.1; extra == "reports"
+Requires-Dist: matplotlib>=3.8; extra == "reports"
+Dynamic: license-file
+
+# glaucoma-future-diffusion
+
+Research-grade prototype for longitudinal glaucoma forecasting from color fundus
+photographs. This repository is not validated for patient care and must not be
+used for clinical diagnosis, triage, or treatment decisions.
+
+The project supports two clearly separated modes:
+
+- Forecasting mode: uses historical images, historical times, and a requested
+  future horizon. Target-visit diagnosis labels are prohibited.
+- Controlled synthesis mode: optionally accepts an explicit disease condition
+  for counterfactual generation or augmentation experiments. These outputs must
+  not be reported as genuine forecasts.
+
+## Dataset status
+
+SIGF is supported through an adapter, but the official DeepGF project states
+that SIGF is available upon request. Place approved data under `data/sigf/` and
+include either a common manifest CSV or the legacy DeepGF folder layout.
+
+GRAPE support is optional. Place downloaded GRAPE files under `data/grape/` with
+metadata CSV/XLSX files and fundus images.
+
+Missing fields are stored as null. The code never fabricates dates, labels,
+patient identifiers, images, or clinical measurements.
+
+## Quick checks
+
+```bash
+python scripts/audit_dataset.py --dataset sigf --root data/sigf --output-dir outputs/audit
+python scripts/preprocess.py --manifest outputs/audit/manifest.csv --output-dir outputs/preprocessed --limit 8
+python -m unittest discover -s tests
+```
+
+If private dataset files are absent, scripts stop cleanly and print setup
+instructions.
+
+## Example inference interface
+
+```bash
+python scripts/predict.py \
+  --images visit_1.jpg visit_2.jpg visit_3.jpg \
+  --times 0.0 0.9 2.1 \
+  --horizon-years 1.0 \
+  --num-samples 16 \
+  --output-dir outputs/example_multi
+```
+
+The prediction interface writes a machine-readable JSON report with a
+research-only disclaimer. Single-image forecasts are supported as a fallback and
+emit a warning because they contain less patient-specific longitudinal context.
+
+## Current implementation slice
+
+Implemented now:
+
+- common manifest schema and validation;
+- SIGF/GRAPE dataset adapters with defensive setup errors;
+- dataset audit outputs: JSON, CSV, HTML, and normalized manifest;
+- patient-level splitting with leakage checks and grouped folds;
+- sequence pairing with irregular continuous time handling;
+- preprocessing primitives for field-of-view crop, orientation handling, and
+  registration overlay placeholders;
+- model/training/evaluation entrypoints with safe PyTorch dependency checks;
+- unit tests for schema, splitting, timing, leakage, pairing, orientation, and
+  label-leakage guards.
+
+## V2: 512px single-image incidence-risk pipeline
+
+The repository now also contains a quality-gated 512×512 pipeline designed for
+future incident-glaucoma research. It uses a dual full-field/optic-disc model,
+discrete annual survival hazards, explicit right-censoring, optional supervised
+anatomy heads, ensemble uncertainty, and a separate visual-scenario generator.
+
+The existing GRAPE checkpoint is **not** a V2 risk checkpoint. With no approved
+incident-glaucoma checkpoint, V2 preprocesses the image and explicitly withholds
+risk instead of returning an untrained prediction.
+
+```bash
+python scripts/predict_risk_v2.py \
+  --image data/grape/images/1_OD_1.jpg \
+  --output-dir outputs/v2_preprocessing_check
+```
+
+See [docs/v2_glaucoma_risk.md](docs/v2_glaucoma_risk.md) for cohort contracts,
+training commands, inference outputs, and release gates.
+
+## V3: fine-detail longitudinal residual diffusion
+
+V3 directly addresses the washed-out detail of the earlier scenario
+autoencoder. It keeps the real 512px baseline photograph intact and learns only
+registered longitudinal change with a 256px residual diffusion model. All
+requested years are generated directly from the real baseline; synthetic
+images are never recursively reused as observations.
+
+The local GRAPE release produces 648 real earlier-to-later pairs from 106
+patients with observed intervals up to 4.8339 years. Years 5–10 remain visibly
+marked unsupported extrapolations.
+
+```bash
+python scripts/train_residual_diffusion_v3.py \
+  --manifest data/grape/manifest.csv \
+  --output-dir outputs/training/grape_residual_diffusion_v3_512_mps \
+  --device mps
+```
+
+See [docs/v3_residual_diffusion.md](docs/v3_residual_diffusion.md) for the
+architecture, evaluation, generation commands, and safety contract.
+
+## Newly trained current-glaucoma gate
+
+HYGD 1.1.0 has been downloaded, checksum-verified, and used to train a 512px
+shared ConvNeXt-Tiny current-glaucoma research gate. The calibrated held-out
+patient AUROC is 0.921. This checkpoint intentionally leaves 2/5/10-year risk
+null because it has no longitudinal incidence supervision.
+
+```bash
+python scripts/predict_risk_v2.py \
+  --image example.jpg \
+  --output-dir outputs/current_gate_example \
+  --risk-checkpoints \
+    outputs/training/hygd_current_gate_convnext_tiny_512_mps/best_calibrated.pt
+```
+
+The combined public/controlled-access dataset strategy and results are recorded
+in [docs/data_solution.md](docs/data_solution.md). The prepared OHTS application
+materials are in [docs/ohts_data_access_request.md](docs/ohts_data_access_request.md).

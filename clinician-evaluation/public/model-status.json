@@ -1,0 +1,7 @@
+{
+  "schemaVersion": "3.0",
+  "progressionOutputReleased": false,
+  "diffusionOutputReleased": true,
+  "status": "balanced_formative_pilot_only",
+  "message": "Patient-specific outcome prediction remains locked. This page evaluates only blinded image realism, disease-class preservation, and healthy stability controls."
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "3.0",
+  "studyType": "balanced blinded scenario-realism and stability pilot",
+  "lockedTestUsed": false,
+  "caseCount": 20,
+  "warning": "Research-only simulations. Glaucoma cases use observed validation follow-ups; healthy cases use disclosed unchanged stability controls. This study does not validate patient-specific prognosis.",
+  "cases": [
+    {
+      "caseId": "B-C26F00D",
+      "horizonYears": 4.26,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-C26F00D/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-C26F00D/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-C26F00D/candidate-b.webp"
+    },
+    {
+      "caseId": "B-8735222",
+      "horizonYears": 3.5,
+      "laterality": "OS",
+      "baseline": "/cases-balanced-v3/B-8735222/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-8735222/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-8735222/candidate-b.webp"
+    },
+    {
+      "caseId": "B-823B897",
+      "horizonYears": 3.31,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-823B897/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-823B897/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-823B897/candidate-b.webp"
+    },
+    {
+      "caseId": "B-A11D28A",
+      "horizonYears": 2.97,
+      "laterality": "OS",
+      "baseline": "/cases-balanced-v3/B-A11D28A/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-A11D28A/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-A11D28A/candidate-b.webp"
+    },
+    {
+      "caseId": "B-6723623",
+      "horizonYears": 2.84,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-6723623/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-6723623/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-6723623/candidate-b.webp"
+    },
+    {
+      "caseId": "B-A19025F",
+      "horizonYears": 2.43,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-A19025F/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-A19025F/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-A19025F/candidate-b.webp"
+    },
+    {
+      "caseId": "B-03ACE63",
+      "horizonYears": 2.27,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-03ACE63/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-03ACE63/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-03ACE63/candidate-b.webp"
+    },
+    {
+      "caseId": "B-0BC0579",
+      "horizonYears": 2.13,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-0BC0579/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-0BC0579/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-0BC0579/candidate-b.webp"
+    },
+    {
+      "caseId": "B-1B49AC4",
+      "horizonYears": 2.11,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-1B49AC4/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-1B49AC4/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-1B49AC4/candidate-b.webp"
+    },
+    {
+      "caseId": "B-F886B47",
+      "horizonYears": 2.09,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-F886B47/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-F886B47/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-F886B47/candidate-b.webp"
+    },
+    {
+      "caseId": "B-C8B0D54",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-C8B0D54/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-C8B0D54/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-C8B0D54/candidate-b.webp"
+    },
+    {
+      "caseId": "B-BD0E972",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-BD0E972/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-BD0E972/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-BD0E972/candidate-b.webp"
+    },
+    {
+      "caseId": "B-5E3015F",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-5E3015F/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-5E3015F/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-5E3015F/candidate-b.webp"
+    },
+    {
+      "caseId": "B-2E441DA",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-2E441DA/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-2E441DA/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-2E441DA/candidate-b.webp"
+    },
+    {
+      "caseId": "B-7DF1B95",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-7DF1B95/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-7DF1B95/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-7DF1B95/candidate-b.webp"
+    },
+    {
+      "caseId": "B-2A0B403",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-2A0B403/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-2A0B403/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-2A0B403/candidate-b.webp"
+    },
+    {
+      "caseId": "B-F622BF7",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-F622BF7/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-F622BF7/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-F622BF7/candidate-b.webp"
+    },
+    {
+      "caseId": "B-38BD06F",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-38BD06F/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-38BD06F/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-38BD06F/candidate-b.webp"
+    },
+    {
+      "caseId": "B-A598053",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-A598053/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-A598053/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-A598053/candidate-b.webp"
+    },
+    {
+      "caseId": "B-40F15AB",
+      "horizonYears": 4.83,
+      "laterality": "OD",
+      "baseline": "/cases-balanced-v3/B-40F15AB/reference.webp",
+      "candidateA": "/cases-balanced-v3/B-40F15AB/candidate-a.webp",
+      "candidateB": "/cases-balanced-v3/B-40F15AB/candidate-b.webp"
+    }
+  ]
+}
